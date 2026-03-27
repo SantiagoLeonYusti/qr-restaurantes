@@ -37,12 +37,13 @@ cors:{origin:"*"}
 
 require("dotenv").config()
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-})
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
+const pool = require("./db")
+
+pool.query("SELECT NOW()")
+  .then(res => console.log("✅ DB conectada:", res.rows))
+  .catch(err => console.error("❌ Error DB:", err))
 
 app.post("/auth/login", async(req,res)=>{
 
