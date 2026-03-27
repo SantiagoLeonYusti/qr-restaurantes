@@ -41,7 +41,7 @@ const loadUsers = async ()=>{
 try{
 
 const res = await axios.get(
-"http://localhost:3000/users/"+restaurantId
+"http://qr-backend-9cmq.onrender.com/users/"+restaurantId
 )
 
 setUsers(res.data)
@@ -62,7 +62,7 @@ const deleteUser = async(id)=>{
 if(!window.confirm("Eliminar este mesero?")) return
 
 await axios.delete(
-"http://localhost:3000/users/"+id
+"http://qr-backend-9cmq.onrender.com/users/"+id
 )
 
 loadUsers()
@@ -77,7 +77,7 @@ const loadMenu = async ()=>{
 try{
 
 const res = await axios.get(
-"http://localhost:3000/menu/"+restaurantId
+"http://qr-backend-9cmq.onrender.com/menu/"+restaurantId
 )
 
 setMenuUrl(res.data.menu_url)
@@ -98,7 +98,7 @@ const loadTables = async ()=>{
 try{
 
 const res = await axios.get(
-"http://localhost:3000/tables/"+restaurantId
+"http://qr-backend-9cmq.onrender.com/tables/"+restaurantId
 )
 
 setTables(res.data)
@@ -122,7 +122,7 @@ return
 }
 
 await axios.post(
-"http://localhost:3000/users/create",
+"http://qr-backend-9cmq.onrender.com/users/create",
 {
 restaurant_id:restaurantId,
 name,
@@ -150,7 +150,7 @@ const deleteTable = async(id)=>{
 if(!window.confirm("Eliminar mesa?")) return
 
 await axios.delete(
-"http://localhost:3000/tables/"+id
+"http://qr-backend-9cmq.onrender.com/tables/"+id
 
 )
 
@@ -168,7 +168,7 @@ const newNumber = prompt("Nuevo número de mesa")
 if(!newNumber) return
 
 await axios.put(
-"http://localhost:3000/tables/"+id,
+"http://qr-backend-9cmq.onrender.com/tables/"+id,
 {table_number:newNumber}
 )
 
@@ -190,7 +190,7 @@ const formData = new FormData()
 formData.append("menu",file)
 
 await axios.post(
-"http://localhost:3000/menu/upload/"+restaurantId,
+"http://qr-backend-9cmq.onrender.com/menu/upload/"+restaurantId,
 formData
 )
 
@@ -211,7 +211,7 @@ return
 }
 
 await axios.post(
-"http://localhost:3000/tables/generate",
+"http://qr-backend-9cmq.onrender.com/tables/generate",
 {
 restaurant_id:restaurantId,
 total_tables:total
@@ -226,7 +226,7 @@ loadTables()
 /* DESCARGAR QR */
 
 const downloadQR = () => {
-  window.open(`http://localhost:3000/tables/qr-pdf/${restaurantId}`);
+  window.open(`http://qr-backend-9cmq.onrender.com/tables/qr-pdf/${restaurantId}`);
 }
 
 
@@ -482,7 +482,7 @@ marginBottom:"30px"
 <button
 onClick={()=>
 window.open(
-"http://localhost:3000"+menuUrl+"?v="+Date.now()
+"http://qr-backend-9cmq.onrender.com"+menuUrl+"?v="+Date.now()
 )
 }
 style={{

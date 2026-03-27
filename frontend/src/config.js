@@ -1,0 +1,1 @@
+export const API_URL = "https://qr-backend-9cmq.onrender.com"
